@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kredit_kes: 1
+  kredit_refinansiranje: 1
+  kredit_stambeni: 1
+  kredit_auto: 1
+  kredit_evergrin: 1
+  kredit_fluo: 1
+  kredit_potrosacki: 1
+
+two:
+  kredit_kes: 1
+  kredit_refinansiranje: 1
+  kredit_stambeni: 1
+  kredit_auto: 1
+  kredit_evergrin: 1
+  kredit_fluo: 1
+  kredit_potrosacki: 1
