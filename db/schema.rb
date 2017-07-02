@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170702110949) do
+ActiveRecord::Schema.define(version: 20170702125631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20170702110949) do
     t.datetime "updated_at", null: false
     t.string "product"
     t.index ["chance_id"], name: "index_factors_on_chance_id"
+  end
+
+  create_table "indicators", force: :cascade do |t|
+    t.string "product"
+    t.string "name"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
   end
 
   create_table "loans", force: :cascade do |t|

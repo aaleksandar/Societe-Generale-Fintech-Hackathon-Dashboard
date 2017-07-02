@@ -1,16 +1,14 @@
 # == Schema Information
 #
-# Table name: factors
+# Table name: indicators
 #
 #  id         :integer          not null, primary key
-#  chance_id  :integer
-#  title      :string
-#  amount     :integer
+#  product    :string
+#  name       :string
+#  score      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  product    :string
 #
 
-class Factor < ApplicationRecord
-  belongs_to :chance
+class Indicator < ApplicationRecord
 end

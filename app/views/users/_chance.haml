@@ -18,13 +18,13 @@
       %br
       %div
         %ul.list-inline.widget_tally
-          - @chance.factors.limit(3).each do |factor|
-            - if factor.product == name
-              %li
-                %span.month= factor.title
-                %span.count
-                  = factor.amount > 0 ? '+' : '-'
-                  = "#{factor.amount.abs}%"
+          - @chance.factors.where(product: name).order(id: :desc).limit(3).each do |factor|
+            %li
+              %span.month
+                = factor.title
+              %span.count
+                = factor.amount > 0 ? '+' : '-'
+                = "#{factor.amount.abs}%"
       / %p Šansa za kupovinu
       / .divider
       / %p If you've decided to go in development mode and tweak all of this a bit, there are few things you should do.
