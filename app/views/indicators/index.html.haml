@@ -4,7 +4,7 @@
     .page-title
       .title_left
         %h3
-          Svi klijenti
+          Indikatori
           / %small Some examples to get you started
       / .title_right
       /   .col-md-5.col-sm-5.col-xs-12.form-group.pull-right.top_search
@@ -43,35 +43,19 @@
             %table#datatable.table.table-striped.table-bordered
               %thead
                 %tr
-                  %th Korisnik
-                  / %th Rođen
-                  %th Keš
-                  %th Refinansiranje
-                  %th Stambeni
-                  %th Auto
-                  %th Evergrin
-                  %th Fluo
-                  %th Potrošački
+                  %th Targetovani proizvod
+                  %th Facebook stranica
+                  %th Score
+                  / %th
+                  / %th
+                  / %th
 
               %tbody
-                - @users.each do |user|
+                - @indicators.each do |indicator|
                   %tr
-                    %td= link_to "#{user.name} #{user.surname}", user_path(user)
-                    / %td= user.birthdate
-                    %td= "#{user.chance.kredit_kes}%"
-                    %td= "#{user.chance.kredit_refinansiranje}%"
-                    %td= "#{user.chance.kredit_stambeni}%"
-                    %td= "#{user.chance.kredit_auto}%"
-                    %td= "#{user.chance.kredit_evergrin}%"
-                    %td= "#{user.chance.kredit_fluo}%"
-                    %td= "#{user.chance.kredit_potrosacki}%"
-
-
-/ /page content
-
-/ footer content
-%footer
-  .pull-right
-    SG Hackboard
-  .clearfix
-/ /footer content
+                    %td= indicator.product
+                    %td= indicator.name
+                    %td= indicator.score
+                    / %td= link_to 'Show', indicator
+                    / %td= link_to 'Edit', edit_indicator_path(indicator)
+                    / %td= link_to 'Destroy', indicator, :method => :delete, :data => { :confirm => 'Are you sure?' }
