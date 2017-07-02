@@ -21,6 +21,10 @@
           - @chance.factors.where(product: name).order(id: :desc).limit(3).each do |factor|
             %li
               %span.month
+                - if factor.title.include? 'kredit'
+                  %i.fa.fa-bar-chart{style: "color: #3b5998;"}
+                - else
+                  %i.fa.fa-facebook-official{style: "color: #3b5998;"}
                 = factor.title
               %span.count
                 = factor.amount > 0 ? '+' : '-'
