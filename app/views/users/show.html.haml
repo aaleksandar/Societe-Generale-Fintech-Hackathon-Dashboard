@@ -99,13 +99,13 @@
           /     / Current avatar
           /     %img.img-responsive.avatar-view{:alt => "Avatar", :src => "https://colorlib.com/polygon/gentelella/images/picture.jpg", :title => "Change the avatar"}/
           %h3= "#{@user.name} #{@user.surname}"
-          %ul.list-unstyled.user_data
-            %li
-              %i.fa.fa-map-marker.user-profile-icon
-              San Francisco, California, USA
-            %li
-              %i.fa.fa-briefcase.user-profile-icon
-              Software Engineer
+          / %ul.list-unstyled.user_data
+          /   %li
+          /     %i.fa.fa-map-marker.user-profile-icon
+          /     San Francisco, California, USA
+          /   %li
+          /     %i.fa.fa-briefcase.user-profile-icon
+          /     Software Engineer
 
           %br/
 
@@ -155,21 +155,21 @@
           /       .progress-bar.bg-green{"aria-valuenow" => "49", "data-transitiongoal" => "50", :role => "progressbar", :style => "width: 50%;"}
           / end of skills
         .col-md-9.col-sm-9.col-xs-12
-          = render 'chance', type: 'Kredit', name: 'Keš', percent: 42
-          = render 'chance', type: 'Kredit', name: 'Stambeni', percent: 19
-          = render 'chance', type: 'Kredit', name: 'Auto', percent: 90
-          = render 'chance', type: 'Kredit', name: 'Evergrin', percent: 57
-          = render 'chance', type: 'Kredit', name: 'Fluo', percent: 5
-          = render 'chance', type: 'Kredit', name: 'Potrošački', percent: 57
+          = render 'chance', type: 'Kredit', name: 'Keš', percent: @chance.kredit_kes
+          = render 'chance', type: 'Kredit', name: 'Stambeni', percent: @chance.kredit_stambeni
+          = render 'chance', type: 'Kredit', name: 'Auto', percent: @chance.kredit_auto
+          = render 'chance', type: 'Kredit', name: 'Evergrin', percent: @chance.kredit_evergrin
+          = render 'chance', type: 'Kredit', name: 'Fluo', percent: @chance.kredit_fluo
+          = render 'chance', type: 'Kredit', name: 'Potrošački', percent: @chance.kredit_potrosacki
 
-          = render 'chance', type: 'Kreditne kartice', name: 'Masterata', percent: 2
-          = render 'chance', type: 'Kreditne kartice', name: 'Visa gold', percent: 30
+          / = render 'chance', type: 'Kreditne kartice', name: 'Masterata', percent: 2
+          / = render 'chance', type: 'Kreditne kartice', name: 'Visa gold', percent: 30
 
-          = render 'chance', type: 'Osiguranje', name: 'Životno', percent: 67
-          = render 'chance', type: 'Osiguranje', name: 'Štedno životno', percent: 72
-          = render 'chance', type: 'Osiguranje', name: 'Putno', percent: 50
-          = render 'chance', type: 'Osiguranje', name: 'Imovinsko', percent: 68
-          = render 'chance', type: 'Osiguranje', name: 'Zdravstveno', percent: 91
+          / = render 'chance', type: 'Osiguranje', name: 'Životno', percent: 67
+          / = render 'chance', type: 'Osiguranje', name: 'Štedno životno', percent: 72
+          / = render 'chance', type: 'Osiguranje', name: 'Putno', percent: 50
+          / = render 'chance', type: 'Osiguranje', name: 'Imovinsko', percent: 68
+          / = render 'chance', type: 'Osiguranje', name: 'Zdravstveno', percent: 91
 
     / /page content
     / footer content
