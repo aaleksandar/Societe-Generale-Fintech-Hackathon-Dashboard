@@ -1,0 +1,19 @@
+/ Chance
+.col-md-4.col-xs-12.widget.widget_tally_box
+  .x_panel.ui-ribbon-container.fixed_height_390
+    - if percent > 80
+      .ui-ribbon-wrapper
+        .ui-ribbon
+          Pažnja
+    .x_title
+      %h2= type
+      .clearfix
+    .x_content
+      %div{style: "text-align: center; margin-bottom: 17px"}
+        %span.chart{"data-percent" => percent}
+          %span.percent= percent
+          %canvas{height: "110", width: "110"}
+      %h3.name_title= name
+      %p Šansa za kupovinu
+      / .divider
+      / %p If you've decided to go in development mode and tweak all of this a bit, there are few things you should do.
