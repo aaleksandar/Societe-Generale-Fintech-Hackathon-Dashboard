@@ -60,4 +60,4 @@ gem 'hamlit'
 gem 'hamlit-rails'
 gem 'gentelella-rails'
 gem 'bootstrap_form'
-
+gem 'byebug'

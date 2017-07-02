@@ -15,7 +15,8 @@
       %option Event attendance
       %option Travel
 
-  = f.text_field :product, label: "Proizvod"
+  / = f.text_field :product, label: "Proizvod"
+  = f.select :product, [['Stambeni', "Stambeni"], ['Auto', 'Auto'], ['Fluo', 'Fluo'], ['Evergrin', 'Evergrin'], ['Potrošački', 'Potrošački']], { label: "Proizvod" }, { class: "selectpicker" }
   = f.text_field :name, label: "Facebook stranica"
   = f.text_field :score, label: "Težina"
   = f.hidden_field :status, value: 'new'

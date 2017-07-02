@@ -29,6 +29,7 @@ class IndicatorsController < ApplicationController
 
     respond_to do |format|
       if @indicator.save
+        update_indicators
         format.html { redirect_to indicators_path, notice: 'Indicator was successfully created.' }
         format.json { render :show, status: :created, location: @indicator }
       else
@@ -43,6 +44,7 @@ class IndicatorsController < ApplicationController
   def update
     respond_to do |format|
       if @indicator.update(indicator_params)
+        update_indicators
         format.html { redirect_to indicators_path, notice: 'Indicator was successfully updated.' }
         format.json { render :show, status: :ok, location: @indicator }
       else
@@ -63,6 +65,49 @@ class IndicatorsController < ApplicationController
   end
 
   private
+    def update_indicators
+      Indicator.where(status: 'new').each do |indicator|
+        url = "http://40e0f9fb.ngrok.io/addIndicator" +
+          "?type=like" +
+          "&product=#{indicator.product}" +
+          "&name=#{indicator.name}" +
+          "&score=#{indicator.score}"
+
+        begin
+          factor = open(url).read.to_f
+
+          if factor != 0
+            factor = (factor * 100).to_i
+            User.all.each do |user|
+              if (indicator.product == 'Stambeni')
+                Factor.create!(chance: user.chance, product: indicator.product, title: "Liked #{indicator.name}", amount: factor)
+                user.chance.update!(kredit_stambeni: user.chance.kredit_stambeni + factor)
+              elsif (indicator.product == 'Auto')
+                Factor.create!(chance: user.chance, product: indicator.product, title: "Liked #{indicator.name}", amount: factor)
+                user.chance.update!(kredit_auto: user.chance.kredit_auto + factor)
+              elsif (indicator.product == 'Keš')
+                Factor.create!(chance: user.chance, product: indicator.product, title: "Liked #{indicator.name}", amount: factor)
+                user.chance.update!(kredit_kes: user.chance.kredit_kes + factor)
+              elsif (indicator.product == 'Evergrin')
+                Factor.create!(chance: user.chance, product: indicator.product, title: "Liked #{indicator.name}", amount: factor)
+                user.chance.update!(kredit_evergrin: user.chance.kredit_evergrin + factor)
+              elsif (indicator.product == 'Fluo')
+                Factor.create!(chance: user.chance, product: indicator.product, title: "Liked #{indicator.name}", amount: factor)
+                user.chance.update!(kredit_fluo: user.chance.kredit_fluo + factor)
+              elsif (indicator.product == 'Potrošački')
+                Factor.create!(chance: user.chance, product: indicator.product, title: "Liked #{indicator.name}", amount: factor)
+                user.chance.update!(kredit_potrosacki: user.chance.kredit_potrosacki + factor)
+              end
+            end
+          end
+
+          indicator.update!(status: 'old')
+        rescue
+        end
+      end
+
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_indicator
       @indicator = Indicator.find(params[:id])

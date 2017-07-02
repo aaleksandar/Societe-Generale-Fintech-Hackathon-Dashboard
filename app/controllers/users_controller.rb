@@ -12,31 +12,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    Indicator.where(status: 'new').each do |indicator|
-      url = "http://40e0f9fb.ngrok.io/addIndicator" +
-        "?type=like" +
-        "&product=#{indicator.product}" +
-        "&name=#{indicator.name}" +
-        "&score=#{indicator.score}"
-
-      begin
-        factor = open(url).read.to_f
-
-        if factor != 0
-          factor = (factor * 100).to_i
-          User.all.each do |user|
-            if (indicator.product == 'Stambeni')
-              Factor.create!(chance: user.chance, product: indicator.product, title: "Liked #{indicator.name}", amount: factor)
-              user.chance.update!(kredit_stambeni: user.chance.kredit_stambeni + factor)
-            end
-          end
-        end
-
-        indicator.update!(status: 'old')
-      rescue
-      end
-    end
-
     @chance = @user.chance
     @loans = @user.loans.order(purchase_date: :desc)
   end

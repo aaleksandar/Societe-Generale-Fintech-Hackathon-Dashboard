@@ -2,9 +2,9 @@
 / page content
 .right_col{:role => "main"}
 
-  .row
   .x_content{style: 'margin-top: 30px;'}
-    .col-md-3.col-sm-3.col-xs-12.profile_left
+  .row
+    .col-md-4.col-sm-4.col-xs-12.profile_left
       / .profile_img
       /   #crop-avatar
       /     / Current avatar
@@ -42,32 +42,35 @@
                     %p.excerpt
                       Kamatna stopa:
                       %strong= "#{loan.interest_rate}%"
+                      %br
 
                       Administrativni troškovi:
                       %strong= "#{loan.administrative_cost}%"
 
+                      %br
                       Rok otplate:
                       %strong= loan.repayment
 
 
-    .col-md-9.col-sm-9.col-xs-12
+    .col-md-8.col-sm-8.col-xs-12
       %h3 Šanse za kupovinu
       %br
-      = render 'chance', type: 'Kredit', name: 'Keš', percent: @chance.kredit_kes
-      = render 'chance', type: 'Kredit', name: 'Stambeni', percent: @chance.kredit_stambeni
-      = render 'chance', type: 'Kredit', name: 'Auto', percent: @chance.kredit_auto
-      = render 'chance', type: 'Kredit', name: 'Evergrin', percent: @chance.kredit_evergrin
-      = render 'chance', type: 'Kredit', name: 'Fluo', percent: @chance.kredit_fluo
-      = render 'chance', type: 'Kredit', name: 'Potrošački', percent: @chance.kredit_potrosacki
+      .row
+        = render 'chance', type: 'Kredit', name: 'Stambeni', percent: @chance.kredit_stambeni
+        = render 'chance', type: 'Kredit', name: 'Auto', percent: @chance.kredit_auto
+        = render 'chance', type: 'Kredit', name: 'Keš', percent: @chance.kredit_kes
+        = render 'chance', type: 'Kredit', name: 'Potrošački', percent: @chance.kredit_potrosacki
+        = render 'chance', type: 'Kredit', name: 'Fluo', percent: @chance.kredit_fluo
+        = render 'chance', type: 'Kredit', name: 'Evergrin', percent: @chance.kredit_evergrin
 
-      / = render 'chance', type: 'Kreditne kartice', name: 'Masterata', percent: 2
-      / = render 'chance', type: 'Kreditne kartice', name: 'Visa gold', percent: 30
+        / = render 'chance', type: 'Kreditne kartice', name: 'Masterata', percent: 2
+        / = render 'chance', type: 'Kreditne kartice', name: 'Visa gold', percent: 30
 
-      / = render 'chance', type: 'Osiguranje', name: 'Životno', percent: 67
-      / = render 'chance', type: 'Osiguranje', name: 'Štedno životno', percent: 72
-      / = render 'chance', type: 'Osiguranje', name: 'Putno', percent: 50
-      / = render 'chance', type: 'Osiguranje', name: 'Imovinsko', percent: 68
-      / = render 'chance', type: 'Osiguranje', name: 'Zdravstveno', percent: 91
+        / = render 'chance', type: 'Osiguranje', name: 'Životno', percent: 67
+        / = render 'chance', type: 'Osiguranje', name: 'Štedno životno', percent: 72
+        / = render 'chance', type: 'Osiguranje', name: 'Putno', percent: 50
+        / = render 'chance', type: 'Osiguranje', name: 'Imovinsko', percent: 68
+        / = render 'chance', type: 'Osiguranje', name: 'Zdravstveno', percent: 91
 
   #contact.modal.fade{"aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
     .modal-dialog{:role => "document"}
