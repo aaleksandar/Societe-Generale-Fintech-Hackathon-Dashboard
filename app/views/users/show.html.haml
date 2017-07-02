@@ -155,6 +155,7 @@
           /       .progress-bar.bg-green{"aria-valuenow" => "49", "data-transitiongoal" => "50", :role => "progressbar", :style => "width: 50%;"}
           / end of skills
         .col-md-9.col-sm-9.col-xs-12
+          %h3= ""
           = render 'chance', type: 'Kredit', name: 'Keš', percent: @chance.kredit_kes
           = render 'chance', type: 'Kredit', name: 'Stambeni', percent: @chance.kredit_stambeni
           = render 'chance', type: 'Kredit', name: 'Auto', percent: @chance.kredit_auto
@@ -170,6 +171,23 @@
           / = render 'chance', type: 'Osiguranje', name: 'Putno', percent: 50
           / = render 'chance', type: 'Osiguranje', name: 'Imovinsko', percent: 68
           / = render 'chance', type: 'Osiguranje', name: 'Zdravstveno', percent: 91
+
+      #contact.modal.fade{"aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+        .modal-dialog{:role => "document"}
+          .modal-content
+            .modal-header
+              %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                %span{"aria-hidden" => "true"} ×
+              %h4#myModalLabel.modal-title Kontaktiraj klijenta
+            .modal-body{style: 'font-size: 120%;'}
+              %button.btn.btn-lg.btn-success{type: "button"} Pošalji SMS
+              %i.fa.fa-android
+              = @user.name
+              preferira ovaj vid komunikacije.
+              %br
+              %button.btn.btn-lg.btn-success{type: "button"} Pošalji email
+              %br
+              %button.btn.btn-lg.btn-success{type: "button"} Pozovi
 
     / /page content
     / footer content
