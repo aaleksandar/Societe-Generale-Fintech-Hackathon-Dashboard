@@ -1,6 +1,6 @@
 ActiveAdmin.register Loan do
-  permit_params :user_id, :user,
-    :type,
+  permit_params :user_id,
+    :loan_type,
     :purchase_date,
     :status,
     :amount,

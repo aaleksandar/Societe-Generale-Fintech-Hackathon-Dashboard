@@ -94,10 +94,10 @@
       .row
       .x_content{style: 'margin-top: 30px;'}
         .col-md-3.col-sm-3.col-xs-12.profile_left
-          .profile_img
-            #crop-avatar
-              / Current avatar
-              %img.img-responsive.avatar-view{:alt => "Avatar", :src => "https://colorlib.com/polygon/gentelella/images/picture.jpg", :title => "Change the avatar"}/
+          / .profile_img
+          /   #crop-avatar
+          /     / Current avatar
+          /     %img.img-responsive.avatar-view{:alt => "Avatar", :src => "https://colorlib.com/polygon/gentelella/images/picture.jpg", :title => "Change the avatar"}/
           %h3= "#{@user.name} #{@user.surname}"
           %ul.list-unstyled.user_data
             %li
@@ -108,25 +108,51 @@
               Software Engineer
 
           %br/
+
+          .x_panel
+            .x_title
+              %h2
+                Prethodne kupovine
+              .clearfix
+            .x_content
+              %ul.list-unstyled.timeline
+                - @loans.each do |loan|
+                  %li
+                    .block
+                      .tags
+                        .tag
+                          %span= loan.purchase_date
+                      .block_content
+                        %h2.title
+                          = loan.loan_type
+                        .byline
+                          %span= loan.status
+
+                        %p.excerpt
+                          = "Kamatna stopa: #{loan.interest_rate}%"
+                          = "Administrativni troškovi: #{loan.administrative_cost}%"
+                          = "Rok otplate: #{loan.repayment}"
+
+
           / start skills
-          %h4 Skills
-          %ul.list-unstyled.user_data
-            %li
-              %p Web Applications
-              .progress.progress_sm
-                .progress-bar.bg-green{"aria-valuenow" => "49", "data-transitiongoal" => "50", :role => "progressbar", :style => "width: 50%;"}
-            %li
-              %p Website Design
-              .progress.progress_sm
-                .progress-bar.bg-green{"aria-valuenow" => "69", "data-transitiongoal" => "70", :role => "progressbar", :style => "width: 70%;"}
-            %li
-              %p Automation & Testing
-              .progress.progress_sm
-                .progress-bar.bg-green{"aria-valuenow" => "29", "data-transitiongoal" => "30", :role => "progressbar", :style => "width: 30%;"}
-            %li
-              %p UI / UX
-              .progress.progress_sm
-                .progress-bar.bg-green{"aria-valuenow" => "49", "data-transitiongoal" => "50", :role => "progressbar", :style => "width: 50%;"}
+          / %h4 Skills
+          / %ul.list-unstyled.user_data
+          /   %li
+          /     %p Web Applications
+          /     .progress.progress_sm
+          /       .progress-bar.bg-green{"aria-valuenow" => "49", "data-transitiongoal" => "50", :role => "progressbar", :style => "width: 50%;"}
+          /   %li
+          /     %p Website Design
+          /     .progress.progress_sm
+          /       .progress-bar.bg-green{"aria-valuenow" => "69", "data-transitiongoal" => "70", :role => "progressbar", :style => "width: 70%;"}
+          /   %li
+          /     %p Automation & Testing
+          /     .progress.progress_sm
+          /       .progress-bar.bg-green{"aria-valuenow" => "29", "data-transitiongoal" => "30", :role => "progressbar", :style => "width: 30%;"}
+          /   %li
+          /     %p UI / UX
+          /     .progress.progress_sm
+          /       .progress-bar.bg-green{"aria-valuenow" => "49", "data-transitiongoal" => "50", :role => "progressbar", :style => "width: 50%;"}
           / end of skills
         .col-md-9.col-sm-9.col-xs-12
           = render 'chance', type: 'Kredit', name: 'Keš', percent: 42

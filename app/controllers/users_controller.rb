@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @chance = @user.chance
+    @loans = @user.loans.order(purchase_date: :desc)
   end
 
   private
