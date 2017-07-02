@@ -17,4 +17,5 @@
 
 class Chance < ApplicationRecord
   belongs_to :user
+  has_many :factors
 end

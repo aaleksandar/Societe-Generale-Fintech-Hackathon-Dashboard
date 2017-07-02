@@ -1,6 +1,6 @@
 / Chance
 .col-md-4.col-xs-12.widget.widget_tally_box
-  %button.x_panel.ui-ribbon-container{"data-target" => "#contact", "data-toggle" => "modal", :type => "button"}
+  %button.x_panel.ui-ribbon-container.fixed_height_390{"data-target" => "#contact", "data-toggle" => "modal", :type => "button"}
     - if percent > 75
       .ui-ribbon-wrapper
         .ui-ribbon
@@ -14,6 +14,17 @@
           %span.percent= percent
           %canvas{height: "110", width: "110"}
       %h3.name_title= "#{name} #{type}"
-      %p Šansa za kupovinu
+
+      %br
+      %div
+        %ul.list-inline.widget_tally
+          - @chance.factors.limit(3).each do |factor|
+            - if factor.product == name
+              %li
+                %span.month= factor.title
+                %span.count
+                  = factor.amount > 0 ? '+' : '-'
+                  = "#{factor.amount.abs}%"
+      / %p Šansa za kupovinu
       / .divider
       / %p If you've decided to go in development mode and tweak all of this a bit, there are few things you should do.

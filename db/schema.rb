@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170702081416) do
+ActiveRecord::Schema.define(version: 20170702110949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20170702081416) do
     t.index ["user_id"], name: "index_chances_on_user_id"
   end
 
+  create_table "factors", force: :cascade do |t|
+    t.bigint "chance_id"
+    t.string "title"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "product"
+    t.index ["chance_id"], name: "index_factors_on_chance_id"
+  end
+
   create_table "loans", force: :cascade do |t|
     t.string "loan_type"
     t.date "purchase_date"
@@ -67,5 +77,6 @@ ActiveRecord::Schema.define(version: 20170702081416) do
   end
 
   add_foreign_key "chances", "users"
+  add_foreign_key "factors", "chances"
   add_foreign_key "loans", "users"
 end

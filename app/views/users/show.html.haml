@@ -107,7 +107,7 @@
           /     %i.fa.fa-briefcase.user-profile-icon
           /     Software Engineer
 
-          %br/
+          %br
 
           .x_panel
             .x_title
@@ -126,13 +126,13 @@
                         %h2.title
                           = loan.loan_type
                         .byline
-                          %span= loan.status
+                          %span.label.label-warning= loan.status
 
                         %p.excerpt
                           = "Kamatna stopa: #{loan.interest_rate}%"
                           = "Administrativni troškovi: #{loan.administrative_cost}%"
-                          = "Rok otplate: #{loan.repayment}"
-
+                          Rok otplate:
+                          %strong= loan.repayment
 
           / start skills
           / %h4 Skills
@@ -155,7 +155,8 @@
           /       .progress-bar.bg-green{"aria-valuenow" => "49", "data-transitiongoal" => "50", :role => "progressbar", :style => "width: 50%;"}
           / end of skills
         .col-md-9.col-sm-9.col-xs-12
-          %h3= ""
+          %h3 Šanse za kupovinu
+          %br
           = render 'chance', type: 'Kredit', name: 'Keš', percent: @chance.kredit_kes
           = render 'chance', type: 'Kredit', name: 'Stambeni', percent: @chance.kredit_stambeni
           = render 'chance', type: 'Kredit', name: 'Auto', percent: @chance.kredit_auto
@@ -183,7 +184,7 @@
               %button.btn.btn-lg.btn-success{type: "button"} Pošalji SMS
               %i.fa.fa-android
               = @user.name
-              preferira ovaj vid komunikacije.
+              preferira SMS komunikaciju.
               %br
               %button.btn.btn-lg.btn-success{type: "button"} Pošalji email
               %br

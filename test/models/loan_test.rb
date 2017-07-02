@@ -3,9 +3,9 @@
 # Table name: loans
 #
 #  id                  :integer          not null, primary key
-#  type                :integer
+#  loan_type           :string
 #  purchase_date       :date
-#  status              :integer
+#  status              :string
 #  amount              :integer
 #  repayment           :date
 #  interest_rate       :decimal(, )
