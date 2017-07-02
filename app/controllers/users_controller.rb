@@ -19,19 +19,22 @@ class UsersController < ApplicationController
         "&name=#{indicator.name}" +
         "&score=#{indicator.score}"
 
-      factor = open(url).read.to_f
+      begin
+        factor = open(url).read.to_f
 
-      if factor != 0
-        factor = (factor * 100).to_i
-        User.all.each do |user|
-          if (indicator.product == 'Stambeni')
-            Factor.create!(chance: user.chance, product: indicator.product, title: "Liked #{indicator.name}", amount: factor)
-            user.chance.update!(kredit_stambeni: user.chance.kredit_stambeni + factor)
+        if factor != 0
+          factor = (factor * 100).to_i
+          User.all.each do |user|
+            if (indicator.product == 'Stambeni')
+              Factor.create!(chance: user.chance, product: indicator.product, title: "Liked #{indicator.name}", amount: factor)
+              user.chance.update!(kredit_stambeni: user.chance.kredit_stambeni + factor)
+            end
           end
         end
-      end
 
-      indicator.update!(status: 'old')
+        indicator.update!(status: 'old')
+      rescue
+      end
     end
 
     @chance = @user.chance
