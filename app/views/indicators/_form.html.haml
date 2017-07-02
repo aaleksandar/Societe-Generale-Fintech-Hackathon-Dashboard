@@ -6,9 +6,17 @@
         - @indicator.errors.full_messages.each do |msg|
           %li= msg
 
+  .form-group
+    %label Društvena Akcija
+    %select.form-control
+      %option Like
+      %option Life event
+      %option Group join
+      %option Event attendance
+      %option Travel
 
-  = f.text_field :product
-  = f.text_field :name
-  = f.text_field :score
+  = f.text_field :product, label: "Proizvod"
+  = f.text_field :name, label: "Facebook stranica"
+  = f.text_field :score, label: "Težina"
   = f.hidden_field :status, value: 'new'
   = f.submit 'Dodaj indikator', class: 'btn btn-success'
