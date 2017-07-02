@@ -5,6 +5,7 @@ class IndicatorsController < ApplicationController
   # GET /indicators.json
   def index
     @indicators = Indicator.all
+    @indicator = Indicator.new
   end
 
   # GET /indicators/1
@@ -28,7 +29,7 @@ class IndicatorsController < ApplicationController
 
     respond_to do |format|
       if @indicator.save
-        format.html { redirect_to @indicator, notice: 'Indicator was successfully created.' }
+        format.html { redirect_to indicators_path, notice: 'Indicator was successfully created.' }
         format.json { render :show, status: :created, location: @indicator }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class IndicatorsController < ApplicationController
   def update
     respond_to do |format|
       if @indicator.update(indicator_params)
-        format.html { redirect_to @indicator, notice: 'Indicator was successfully updated.' }
+        format.html { redirect_to indicators_path, notice: 'Indicator was successfully updated.' }
         format.json { render :show, status: :ok, location: @indicator }
       else
         format.html { render :edit }
@@ -69,6 +70,6 @@ class IndicatorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def indicator_params
-      params.require(:indicator).permit(:product, :name, :score)
+      params.require(:indicator).permit(:product, :name, :score, :status)
     end
 end

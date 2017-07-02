@@ -39,11 +39,20 @@
                     %td= "#{user.chance.kredit_potrosacki}%"
 
 
-/ /page content
+  #contact.modal.fade{"aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+    .modal-dialog{:role => "document"}
+      .modal-content
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4#myModalLabel.modal-title Kontaktiraj klijenta
+        .modal-body{style: 'font-size: 120%;'}
+          %button.btn.btn-lg.btn-success{type: "button"} Pošalji SMS
+          %i.fa.fa-android
+          / = @user.name
+          preferira SMS komunikaciju.
+          %br
+          %button.btn.btn-lg.btn-success{type: "button"} Pošalji email
+          %br
+          %button.btn.btn-lg.btn-success{type: "button"} Pozovi
 
-/ footer content
-%footer
-  .pull-right
-    SG Hackboard
-  .clearfix
-/ /footer content
